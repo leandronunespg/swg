@@ -55,6 +55,8 @@ class entradaproduto extends Model
                         'user_id',
                         'note_number',
                         'note',
-                        'total',                        
+                        'valor_frete',                        
+                        'total_items',                        
+                        'total_nota',                        
                         'date'];
 }

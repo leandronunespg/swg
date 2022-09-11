@@ -14,10 +14,12 @@ use App\Models\User;
 use App\DataTables\LancamentoDataTable;
 use App\Models\orcamento;
 use App\Models\orcamentoitens;
+use App\Models\entradaitens;
 use App\Models\pedido;
 use App\Models\pedidoitems;
 use App\Models\empresas;
-  
+use App\Models\entradaproduto;
+
 class PDFController extends Controller
 {
     /**
@@ -56,5 +58,24 @@ class PDFController extends Controller
         $pdf = PDF::loadView('printpedido', compact('ResultEmpresa','ResultEntidade','ResultUser','ResultPedido','ResultItemsPedido','ResultCentroCusto','ResultHistorico','ResultFormaPagamento','ResultLancamento'));
         $id = str_pad($id , 5 , '0' , STR_PAD_LEFT);
         return $pdf->setPaper('A4')->stream("Pedido_$id.pdf");
+    }
+    
+    public function GerarCompra($id){
+
+        $ResultEmpresa           = empresas::first();
+        $ResultUser              = User::all();
+        $ResultEntrada           = entradaproduto::where('id',$id)->first();
+        $ResultItemsEntrada      = entradaitens::where('entrada_id',$id)->get();
+        $ResultCentroCusto       = centrocusto::orwhere('name','like','vendas')->get();
+        $ResultEntidade          = entidades::where('id',$ResultEntrada->entidade_id)->first();
+        $ResultHistorico         = historico::where('centrocusto_id',$ResultEntrada->centrocusto_id)->get();
+        $ResultFormaPagamento    = formapagamento::all();
+        $ResultLancamento        = lancamento::where('entradaproduto_id',$id)->get();
+               
+        //dd($ResultItemsEntrada);
+          
+        $pdf = PDF::loadView('printcompra', compact('ResultEmpresa','ResultEntidade','ResultUser','ResultEntrada','ResultItemsEntrada','ResultCentroCusto','ResultHistorico','ResultFormaPagamento','ResultLancamento'));
+        $id = str_pad($id , 5 , '0' , STR_PAD_LEFT);
+        return $pdf->setPaper('A4')->stream("Compra_$id.pdf");
     }
 }

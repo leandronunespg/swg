@@ -116,7 +116,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/EntradaProduto/Update/{id?}',    [EntradaprodutoController::class, 'update'])->name('entradaproduto.atualizar');
     Route::get('/EntradaProduto/Deletar/{id?}',    [EntradaprodutoController::class, 'destroy'])->name('entradaproduto.deletar');
     Route::post('/ConsultaProdutos/{search?}',     [EntradaprodutoController::class, 'consultaprodutos'])->name('consultaprodutos');       
-    
+    Route::get('compra-pdf/{id?}',                 [PDFController::class, 'GerarCompra']);
+
     //Rotas para Lançamentos
     Route::get('/Lancamentos/{status?}',           [LancamentoController::class, 'index'])->name('lancamentos.index');
     Route::get('/Lancamentos/Dados/',              [LancamentoController::class, 'dados'])->name('lancamentos.dados');

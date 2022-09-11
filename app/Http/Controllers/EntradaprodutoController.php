@@ -222,7 +222,9 @@ class EntradaprodutoController extends Controller
              'note'              => $request->note,
              'user_id'           => 1,//$request->user_id,
              'note_number'       => $request->note_number,
-             'total'             => $request->totalnota,
+             'valor_frete'       => $request->valor_frete,
+             'total_nota'        => $request->total_nota,
+             'total_items'       => $request->total_items,
              'date'              => $request->date          
             );
              //insere o cabecalho dos dados da entrada
@@ -249,6 +251,7 @@ class EntradaprodutoController extends Controller
             'price'               => $request->parcela_price[$key],
             'formapagamento_id'   => $request->formapagamento_id[$key],
             'date'                => $request->parcela_date[$key],
+            'type'                => 'D',
             'status'              => $parcela_status,
             );
             

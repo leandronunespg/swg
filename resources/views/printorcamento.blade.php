@@ -86,7 +86,7 @@
                 <td colspan="3">{{ number_format(@$ResultOrcamento->valor_frete,2,'.','') }}</td>
             </tr>
             <tr>
-                <td><strong>Valor d Total: </strong></td>
+                <td><strong>Valor Total: </strong></td>
                 <td colspan="3">{{ number_format(@$ResultOrcamento->grand_total,2,'.','') }}</td>
             </tr>
             

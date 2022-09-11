@@ -145,9 +145,9 @@ Toast.fire({
                 <td>{{ number_format($resultado->total,2,',','.') }}</td>                
                 <td>{{ $resultado->FormatData() }}</td>                
                 <td><div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="/Pedido/Editar/{{ $resultado->id }}"><i class="bi bi-pencil-square btn-sm"></i></a> 
-                    <a href="javascript:del({{ $resultado->id }})"><i class="bi bi-trash btn-sm" style="color:red;"></i></a>
-                    <i id="btnPrint" class="bi bi-printer btn-sm" style="color:green;"></i>
+                    <a href="/Pedido/Editar/{{ $resultado->id }}"><i class="bi bi-pencil-square btn-sm"></i></a> | 
+                    <a href="javascript:del({{ $resultado->id }})"><i class="bi bi-trash btn-sm" style="color:red;"></i></a> | 
+                    <a href="{{ url("pedido-pdf/$resultado->id") }}" target="_black"><i id="btnPrint" class="bi bi-printer btn-sm" style="color:green;"></i></a>
                     </div>
                 </td>            
               </tr>

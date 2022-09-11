@@ -53,7 +53,7 @@
 
         <div class="row">
           <div class="col-sm-6"><h4>Entrada de Produtos</h4></div>
-          <div class="col-sm-6" align='right'></div>
+          <div class="col-sm-6 text-end"></div>
           
           <div class="col-sm-12">
                 <form method="POST" action="@if(!@$ResultEntrada){{ route('entradaproduto.salvar') }}@else {{ route('entradaproduto.atualizar',@$ResultEntrada->id) }} @endif">
@@ -83,21 +83,39 @@
                       </div>
 
                       <div class="col-sm-4 p-1">
-                          <div class="input-group">
-                              <span class="input-group-addon input-group-text"><i class="bi bi-cash-coin"></i></span>
-                              <input id="totalnota" name="totalnota" type="text" class="form-control"
-                                  placeholder="Total da NFe" value="{{ @$ResultEntrada->total }}" onKeyUp="mascaraMoeda(this, event)"  required>
-                          </div>
-                      </div>
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-text"> <i class="bi bi-upc-scan"></i>
+                            </span>
+                            <input id="note_number" name="note_number" type="text" class="form-control"
+                                placeholder="Nº da NFe" value="{{ @$ResultEntrada->note_number }}" >
+                        </div>
+                    </div>
 
-                      <div class="col-sm-4 p-1">
-                          <div class="input-group">
-                              <span class="input-group-addon input-group-text"> <i class="bi bi-upc-scan"></i>
-                              </span>
-                              <input id="note_number" name="note_number" type="text" class="form-control"
-                                  placeholder="Nº da NFe" value="{{ @$ResultEntrada->note_number }}" >
-                          </div>
-                      </div>
+                    <div class="col-sm-4 p-1">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-text"> <i class="bi bi-upc-scan"></i>
+                            </span>
+                            <input id="valor_frete" name="valor_frete" type="text" class="form-control"
+                                placeholder="Valor do Frete" value="{{ @$ResultEntrada->valor_frete }}" >
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 p-1">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-text"><i class="bi bi-cash-coin"></i></span>
+                            <input id="total_items" name="total_items" type="text" class="form-control"
+                                placeholder="Total dos Itens" value="{{ @$ResultEntrada->total_items }}" onKeyUp="mascaraMoeda(this, event)"  required>
+                        </div>
+                    </div>
+                                            
+                    <div class="col-sm-4 p-1">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-text"> <i class="bi bi-upc-scan"></i>
+                            </span>
+                            <input id="total_nota" name="total_nota" type="text" class="form-control"
+                                placeholder="Total Final" value="{{ @$ResultEntrada->total }}" >
+                        </div>
+                    </div>                                            
 
                   </div>
 
@@ -228,6 +246,15 @@
                                   placeholder="R$" value="" onKeyUp="mascaraMoeda(this, event)" >
                           </div>
                       </div>                      
+                      
+                      <div class="col-sm-3 p-1">
+                          <div class="input-group">
+                              <span class="input-group-addon input-group-text"> <i class="bi bi-align-center"></i>
+                              </span>
+                              <input id="espessura" name="espessura" type="text" class="form-control"
+                                  placeholder="Espessura" value="" >
+                          </div>
+                      </div>
 
                       <div class="col-sm-2 p-1">
                           <div class="input-group">
@@ -238,14 +265,6 @@
                           </div>
                       </div>
 
-                      <div class="col-sm-3 p-1">
-                          <div class="input-group">
-                              <span class="input-group-addon input-group-text"> <i class="bi bi-align-center"></i>
-                              </span>
-                              <input id="espessura" name="espessura" type="text" class="form-control"
-                                  placeholder="Espessura" value="" >
-                          </div>
-                      </div>
 
                       <div class="col-sm-2 p-1">
                           <div class="input-group">
@@ -288,11 +307,11 @@
                           <thead>
                               <tr>
                                   <th style="width: 20%">Produto</th>
-                                  <th style="width: 10%" class="text-end">Valor</th>
+                                  <th style="width: 10%" class="text-end">R$ Unitário</th>
                                   <th style="width: 10%" class="text-end">Qtde</th>
-                                  <th style="width: 10%" class="text-end">Total</th>
-                                  <th style="width: 10%" class="text-end">Largura</th>
+                                  <th style="width: 10%" class="text-end">R$ Total</th>
                                   <th style="width: 10%" class="text-end">Espessura</th>
+                                  <th style="width: 10%" class="text-end">Largura</th>
                                   <th style="width: 10%" class="text-end">Comprimento</th>
                                   <th style="width: 10%" class="text-end">Qtd M²</th>
                                   <th style="width: 10%" class="text-end">Total M²</th>
@@ -305,14 +324,14 @@
                         <thead>
                             <tr>
                                 <th style="width: 20%">Produto</th>
-                                <th style="width: 10%" class="text-end">Valor</th>
+                                <th style="width: 10%" class="text-end">R$ Unitário</th>
                                 <th style="width: 10%" class="text-end">Qtde</th>
-                                <th style="width: 10%" class="text-end">Total</th>
-                                <th style="width: 10%" class="text-end">Largura</th>
+                                <th style="width: 10%" class="text-end">R$ Total</th>
                                 <th style="width: 10%" class="text-end">Espessura</th>
+                                <th style="width: 10%" class="text-end">Largura</th>
                                 <th style="width: 10%" class="text-end">Comprimento</th>
                                 <th style="width: 10%" class="text-end">Qtd M²</th>
-                                <th style="width: 10%" class="text-end">Total M²</th>
+                                <th style="width: 10%" class="text-end">Total M³</th>
                             </tr>
                         </thead>                              
                         <tbody>
@@ -322,8 +341,8 @@
                                 <td style="width: 10%" class="text-end">{{ $result->price }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->quantity }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->total }}</td>
-                                <td style="width: 10%" class="text-end">{{ $result->largura }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->espessura }}</td>
+                                <td style="width: 10%" class="text-end">{{ $result->largura }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->comprimento }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->qtde_quadrado }}</td>
                                 <td style="width: 10%" class="text-end">{{ $result->total_quadrado }}</td>
@@ -453,7 +472,27 @@
         });
 
            
+      //calcula os campos de frete e totais de grid e campo total
+      function calculaTotal() {
+        var colunas = document.querySelectorAll('.vlr');
+        var numColunas = colunas.length;
+        var soma = 0;
+        var total_items = 0; 
+        var total_nota = 0; 
+        var converte = 0; 
+        var frete = parseFloat($('#valor_frete').val());      
+        
+        for (let i = 0; i < numColunas; i++) {
+            converte = parseFloat(colunas[i].textContent.replace('R$ ', '').replace(',', '.'));
+            soma     = parseFloat(soma + converte);            
+            total_nota = parseFloat(soma + frete);
 
+            $('#total_items').val(soma.toFixed(2));
+            $('#total_nota').val(total_nota.toFixed(2));
+
+            //console.log((grand_total))            
+        }
+      }
 
         //multiplica o valor pela quantidade de itens
         //resultado joga no total
@@ -464,6 +503,18 @@
           
           var TotalOperacao = (quantity * price).toFixed(2);
           $("#total").val(TotalOperacao);
+         
+        })
+        
+        //Formula para Total m³
+        $("#quantity, #espessura, #largura, #comprimento").change(function () {     
+          var quantity    = $("#quantity").val();
+          var espessura   = $("#espessura").val();
+          var largura     = $("#largura").val();
+          var comprimento = $("#comprimento").val();       
+          
+          var TotalOperacao = ((quantity * largura * espessura * comprimento)/1000).toFixed(2);
+          $("#total_quadrado").val(TotalOperacao);
          
         })
         
@@ -534,8 +585,8 @@
             html_itens += "<input name='price[]' type='hidden' value='"+ price + "'>";
             html_itens += "<input name='quantity[]' type='hidden' value='"+ quantity + "'>";
             html_itens += "<input name='total[]' type='hidden' value='"+ total + "'>";
-            html_itens += "<input name='largura[]' type='hidden' value='"+ largura + "'>";
             html_itens += "<input name='espessura[]' type='hidden' value='"+ espessura + "'>";
+            html_itens += "<input name='largura[]' type='hidden' value='"+ largura + "'>";
             html_itens += "<input name='comprimento[]' type='hidden' value='"+ comprimento + "'>";
             html_itens += "<input name='qtde_quadrado[]' type='hidden' value='"+ qtde_quadrado + "'>";
             html_itens += "<input name='total_quadrado[]' type='hidden' value='"+ total_quadrado + "'>";
@@ -545,8 +596,8 @@
             html_itens += "<td style='width: 20%'>" + product_id + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + price + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + quantity + "</td>";
-            html_itens += "<td style='width: 10%' align='right'>" + total + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + largura + "</td>";
+            html_itens += "<td style='width: 10%' align='right' class='vlr'>" + total + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + espessura + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + comprimento + "</td>";
             html_itens += "<td style='width: 10%' align='right'>" + qtde_quadrado + "</td>";
@@ -557,6 +608,7 @@
 
             $("#divItens").append(html_itens);
             limpa_campos();
+            calculaTotal();
             $("#product_name").focus(); 
 
         });

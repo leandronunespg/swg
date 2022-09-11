@@ -262,11 +262,13 @@ $(document).ready(function() {
                     centrocusto_id: centrocusto_id, //variável do campo centro de custo
                 },
                 success: function(resposta) {    //retorno da resposta da minha rota                    
-                        var ItensOptions = [];
+                        var ItensOptions = [];                        
+                        
                         $.each(resposta, function(k, v) {//loop para criar os registros
                             ItensOptions += "<option value='"+ v["id"] +"'>"+ v["name"] +"</option>";//option com o resultado da consulta
                         });
                         $("#historico_id").html(ItensOptions);//combo box onde adicionará o resultado dos dados
+                        
                 },
                 error: function(resposta) {
                     console.log("Deu errado!");

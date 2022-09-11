@@ -98,18 +98,21 @@
                           </div>
                       </div>
                       @endif
-                      <div class="col-sm-12 p-1 Orcamento">
+                      <div class="col-sm-11 p-1 Orcamento">
                           <div class="input-group">
                               <span class="input-group-addon input-group-text"><i
-                                      class="bi bi-chat-square-text-fill"></i></span>
-                              <select id="entidade_id" name="entidade_id" class="form-control" required>
-                                  <option value="">Cliente</option>
-                                  @foreach ($ResultEntidade as $key => $result)
-                                      <option value="{{ $result->id }}" @if($result->id == @$ResultOrcamento->entidade_id) selected @endif>{{ $result->name }}</option>
-                                  @endforeach
-                              </select>
-                          </div>
-                      </div>
+                                class="bi bi-chat-square-text-fill"></i></span>
+                                <select id="entidade_id" name="entidade_id" class="form-control" required>
+                                    <option value="">Cliente</option>
+                                    @foreach ($ResultEntidade as $key => $result)
+                                    <option value="{{ $result->id }}" @if($result->id == @$ResultOrcamento->entidade_id) selected @endif>{{ $result->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 p-1">
+                        <a href="#"><i class="bi bi-person-lines-fill btn btn-info"></i></a>
+                        </div>    
 
                       <div class="col-sm-4 p-1 Orcamento">
                           <div class="input-group">

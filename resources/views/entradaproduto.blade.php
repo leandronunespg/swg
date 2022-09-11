@@ -126,7 +126,8 @@ Toast.fire({
                 <td>{{ number_format($resultado->total,2,',','.') }}</td>                
                 <td>{{ $resultado->FormatData() }}</td>                
                 <td><a href="/EntradaProduto/Editar/{{ $resultado->id }}"><i class="bi bi-pencil-square"></i></a> | 
-                    <a href="javascript:del({{ $resultado->id }})"><i class="bi bi-trash" style="color:red;"></i></a>
+                    <a href="javascript:del({{ $resultado->id }})"><i class="bi bi-trash" style="color:red;"></i></a> | 
+                    <a href="{{ url("compra-pdf/$resultado->id") }}" target="_black"><i id="btnPrint" class="bi bi-printer btn-sm" style="color:green;"></i></a>
                 </td>            
               </tr>
              @endforeach

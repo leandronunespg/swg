@@ -482,7 +482,7 @@ Toast.fire({
         return this.split('').reverse().join(''); 
       };    
       
-      //caulcula os campos de frente e totias de grid e campo total
+      //calcula os campos de frete e totais de grid e campo total
       function calculaTotal() {
         var colunas = document.querySelectorAll('.vlr');
         var numColunas = colunas.length;
